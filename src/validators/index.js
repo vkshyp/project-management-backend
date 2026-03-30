@@ -18,11 +18,11 @@ const userRegisterValidator = () => {
         .withMessage("Username must be in lower case")
         .isLength({min: 3})
         .withMessage("Username must be in at least 3 characters long "),
-        body("passwword")
+        body("password")
         .trim()
         .notEmpty()
         .withMessage("Password is required"),
-        body("fullname")
+        body("fullName")
         .optional()
         .trim()
         
@@ -32,7 +32,7 @@ const userRegisterValidator = () => {
 const userLoginValidator = () => {
     return [
         body("email")
-        .optional()
+        .notEmpty()
         .isEmail()
         .withMessage("Email is invalid"),
         body("password")
@@ -70,7 +70,10 @@ const createProjectValidator = () => {
         body("name")
         .notEmpty()
         .withMessage("Name is required"),
-        body("description").optional(),
+        body("description")
+        .optional()
+        .trim()
+        // .withMessage("Description is required"),
     ];
 };
 

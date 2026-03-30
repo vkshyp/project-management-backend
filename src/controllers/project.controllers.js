@@ -46,16 +46,14 @@ const getProjects = asyncHandler(async (req, res) => {
        },
        {
         $project: {
-            project:{
-                _id: 1,
-                name: 1,
-                description: 1,
-                members: 1,
-                createdAt: 1,
-                createdBy: 1
-            },
-            role: 1,
-            _id: 0
+            "project._id": 1,
+             "project.name": 1,
+             "project.description": 1,
+             "project.members": 1,
+              "project.createdAt": 1,
+              "project.createdBy": 1,
+    role: 1,
+    _id: 0
         }
        }
     ]);
@@ -182,7 +180,7 @@ const addMembersToProject = asyncHandler(async (req, res) => {
     .json(
         new ApiResponse(
             201,
-            {},
+            projectMember,
             "Project member added successfully"
         )
     );
@@ -221,7 +219,7 @@ const getProjectMembers = asyncHandler(async (req, res) => {
      },{
         $addFields: {
             user: {
-                $arrayEleAt: ["$user", 0]
+                $arrayElemAt: ["$user", 0]
             }
         }
      },{
@@ -293,7 +291,7 @@ const deleteMember = asyncHandler(async (req, res) => {
         throw new ApiError(400, "project member not found ");
     }
     projectMember = await projectMember.findByIdAndDelete(
-        projectMember._id,
+        projectMember._id
     );
      if(!projectMember){
         throw new ApiError(400, "project member not found ");
