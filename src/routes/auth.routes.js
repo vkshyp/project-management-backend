@@ -1,8 +1,8 @@
 import { Router } from "express";
 import {changeCurrentPassword, forgotPasswordRequest, getCurrentUser, login, logoutUser, refreshAccessToken, registerUser, resendEmailVeification, verifyEmail,resetForgotPassword} from "../controllers/auth.controllers.js";
-import { validate } from "../middleswares/validator.middleware.js";
+import { validate } from "../middlewares/validator.middleware.js";
 import { userChangeCurrentPasswordValidator, userLoginValidator, userRegisterValidator,userForgotPasswordValidator,userResetForgotPasswordValidator } from "../validators/index.js";
-import { verifyJWT } from "../middleswares/auth.middleware.js";
+import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 
 const router = Router();

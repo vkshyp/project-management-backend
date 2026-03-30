@@ -9,9 +9,9 @@ import { addMembersToProject,
     updateMemberRole,
     deleteProject,
     } from "../controllers/project.controllers.js";
-import { validate } from "../middleswares/validator.middleware.js";
+import { validate } from "../middlewares/validator.middleware.js";
 import { createProjectValidator, addMemberToProjectValidator} from "../validators/index.js";
-import { verifyJWT,validateProjectPermission } from "../middleswares/auth.middleware.js";
+import { verifyJWT,validateProjectPermission } from "../middlewares/auth.middleware.js";
 import { AvailableUserRole, UserRolesEnum } from "../utils/constants.js";
 
 
